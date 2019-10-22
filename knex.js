@@ -1,9 +1,3 @@
-const express = require('express');
-const app = express();
-var mysql = require('mysql');
-
-app.use(express.json())
-
 var knex = require('knex')({
     client: 'mysql',
     connection: {
