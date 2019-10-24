@@ -1,17 +1,22 @@
 const express = require('express');
-const router = express.Router()
-const app = express();
-router.use(express.json())
-const add = require('./insert')
+const product = express.Router()
+product.use(express.json())
+const add = require('./Model/insert')
 
 router.post('/add',(req,res)=>{
-    let productDetails = {
-        productName:req.body.productName,
+    var productDetails = {
+        product:req.body.product,
         price:req.body.price, 
-        imported:req.body.imported,
+        imported:req.body.imported, 
         category:req.body.category
     }
-    let response = add.calculate(productDetails)
-    res.json(response)
-})
-module.exports=router;
+    productDetails["imported"]=productDetails.imported.toString()
+    let response = add.insertData(productDetails)
+    response.then((result)=>{
+        return res.json({ success: true, message: 'ok' },productDetails);
+    }).catch((err)=>{
+        res.send(err)
+    });
+    });
+
+module.exports=product;
