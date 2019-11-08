@@ -1,10 +1,10 @@
 const express = require('express');
 const product = express.Router()
 product.use(express.json())
-const add = require('./Model/insert')
+const add = require('../Model/productInsert')
 
-router.post('/add',(req,res)=>{
-    var productDetails = {
+product.post('/add',(req,res)=>{
+    var  productDetails = {
         product:req.body.product,
         price:req.body.price, 
         imported:req.body.imported, 
