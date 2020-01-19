@@ -10,6 +10,3 @@ knex.schema.createTable('cart', (table) => {
         table.float("priceWithQuantity")
       }).then(() => console.log("table created"))
         .catch((err) => { console.log(err); throw err })
-        .finally(() => {
-            knex.destroy();
-      });
