@@ -10,7 +10,6 @@ product.post('/add',(req,res)=>{
         imported:req.body.imported, 
         category:req.body.category
     }
-    productDetails["imported"]=productDetails.imported.toString()
     let response = add.insertData(productDetails)
     response.then((result)=>{
         return res.json({ success: true, message: 'ok' },productDetails);
